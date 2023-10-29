@@ -1,0 +1,26 @@
+<div th:replace="fragments/header.html"></div>
+<div th:replace="fragments/navigation.html"></div>
+
+	<div class="container">
+		<h1>Enter Valid Course Details</h1>	
+			<div class="row pt-3">
+			<form th:action="@{/accounts/user/courses/add}" method="post" th:object="${course}">
+				<fieldset class="mb-3"> 
+				<label>Description:</label>
+				<input type="text" placeholder="Astroarchaeology" required="required" th:field="*{description}"/>
+					<div class="text-warning" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+				</fieldset>
+				
+				<fieldset class="mb-3">
+				<label>Target Date:</label> 
+					<input type="date" required="required" th:field="*{targetDate}"/>
+					<div class="text-warning" th:if="${#fields.hasErrors('targetDate')}" th:errors="*{targetDate}"></div>
+				</fieldset>
+				
+					<input type="submit" class="btn btn-success" value="Add New Course"/> 						
+					<input type="reset" class="btn btn-secondary" value="Reset"/>
+			</form>		
+			</div>
+	</div>
+	
+<div th:replace="fragments/footer.html"></div>

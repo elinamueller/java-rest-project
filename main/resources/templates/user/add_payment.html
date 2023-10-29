@@ -1,0 +1,46 @@
+<div th:replace="fragments/header.html"></div>
+<div th:replace="fragments/navigation.html"></div>
+
+	<div class="container">
+		<h1>Enter Valid Expense Details</h1>	
+			<div class="row pt-3">
+			<form th:action="@{/accounts/user/payments/add}" method="post" th:object="${paymentDTO}">
+				<fieldset class="mb-3"> 
+				<label>Description:</label>
+					<input type="text" placeholder="Astroarchaeology Book" required="required" th:field="*{name}"/>
+					<div class="text-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+				</fieldset>
+				
+				<fieldset class="mb-3">
+				<label>Amount:</label>
+					<input type="text" placeholder="24.99" required="required" th:field="*{amount}"/>
+					<div class="text-warning" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></div>
+				</fieldset>
+				
+				<fieldset class="mb-3">
+				<label>Method:</label>
+					<input type="text" placeholder="Cash" required="required" th:field="*{method}"/>
+					<div class="text-warning" th:if="${#fields.hasErrors('method')}" th:errors="*{method}"></div>
+				</fieldset>
+				
+				<fieldset class="mb-3"> 
+				<label>Status:</label>
+					<select th:field="*{status}">
+						<option th:value="'true'" th:text="Paid"></option>
+						<option th:value="'false'" th:text="Pending"></option>
+					</select>
+				</fieldset>
+				
+				<fieldset class="mb-3">
+				<label>Date:</label>
+					<input type="date" placeholder="2026-01-31" required="required" th:field="*{date}"/>
+					<div class="text-warning" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
+				</fieldset>
+				
+					<input type="submit" class="btn btn-success" value="Add New Expense"/> 						
+					<input type="reset" class="btn btn-secondary" value="Reset"/>
+			</form>		
+			</div>
+	</div>
+	
+<div th:replace="fragments/footer.html"></div>

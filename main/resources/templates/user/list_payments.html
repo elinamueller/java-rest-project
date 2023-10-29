@@ -1,0 +1,47 @@
+<div th:replace="fragments/header.html"></div>
+<div th:replace="fragments/navigation.html"></div>
+
+	<div class="container">
+	<h1>Your Expenses</h1>
+	
+	<table class="table">
+	<div class="row pt-3">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Method</th>
+				<th>Amount</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Update Expense</th>
+				<th>Delete Expense</th>
+			</tr>
+		</thead>
+	</div>
+		<tbody>
+		
+		<tr th:each="paymentDTO: ${paymentList}" >
+			<td th:text="${paymentDTO.id}" />
+			<td th:text="${paymentDTO.name}" />
+			<td th:text="${paymentDTO.method}" />
+			<td th:text="${paymentDTO.amount}" />
+			<td th:text="${paymentDTO.status}" />
+			<td th:text="${paymentDTO.date}" />
+			
+			<td> <a th:href="@{'/accounts/user/payments/update?id='+${paymentDTO.id}}" class="btn btn-primary"> Update </a> </td>
+			<td> <a th:href="@{'/accounts/user/payments/delete?id='+${paymentDTO.id}}" class="btn btn-danger"> Delete </a> </td>
+			
+		</tr> 
+		</tbody>
+	</table>
+	
+	<div class="row mt-4">	
+		<div class="col-sm-10">	
+			<a href="payments/add" class="btn btn-success"> Add Expense </a>
+			<a href="login" class="btn btn-warning"> Log out </a>
+		</div>
+	</div>
+	</div>
+	
+<div th:replace="fragments/footer.html"></div>

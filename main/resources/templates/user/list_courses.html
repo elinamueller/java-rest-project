@@ -1,0 +1,42 @@
+<div th:replace="fragments/header.html"></div>
+<div th:replace="fragments/navigation.html"></div>
+
+	<div class="container">
+	<h1>Your Courses</h1>
+	
+	<table class="table">
+	<div class="row pt-3">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Description</th>
+				<th>Target Date</th>
+				<th>Completed</th>
+				<th>Update Course</th>
+				<th>Delete Course</th>
+			</tr>
+		</thead>
+	</div>
+		<tbody>
+		<tr th:each="course: ${courses}">
+			<td th:text="${course.id}" />
+			<td th:text="${course.description}" />
+			<td th:text="${course.targetDate}" />	
+			<td th:text="${course.done} ? 'Completed' : 'Pending'" />
+			
+			<td> <a th:href="@{'/accounts/user/courses/update?id='+${course.id}}" class="btn btn-primary"> Update </a> </td>
+			<td> <a th:href="@{'/accounts/user/courses/delete?id='+${course.id}}" class="btn btn-danger"> Delete </a> </td>
+			
+		</tr>
+		</tbody>
+	</table>
+	
+	<div class="row mt-4">	
+		<div class="col-sm-10">	
+			<a href="courses/add" class="btn btn-success"> Add Courses </a>
+			<a href="login" class="btn btn-warning"> Log out </a>
+		</div>
+	</div>
+	</div>
+	
+<div th:replace="fragments/footer.html"></div>
