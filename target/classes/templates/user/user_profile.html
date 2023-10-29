@@ -1,0 +1,84 @@
+<div th:replace="fragments/header.html"></div>
+<div th:replace="fragments/navigation.html"></div>
+    <section class="vh-100" style="background-color: #f4f5f7;">
+  	<div class="container py-5 h-100">
+	<div class="row d-flex justify-content-center align-items-center h-100">
+	<div class="col col-lg-8 mb-8 mb-lg-0">
+	<div class="card mb-3" style="border-radius: .5rem;">
+	<div class="row g-0">
+	<div class="col-md-4 gradient-custom text-center text-black"
+				style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+		<img src="https://avatars.githubusercontent.com/u/81512565?v=4"
+				alt="Avatar" class="img-fluid my-5" style="width: 150px;" />	
+		<p><h4 th:text="${user.firstname}" /> </p>
+		<p><h4 th:text="${user.lastname}" /> </p>
+			<i class="far fa-edit mb-5"></i>
+	</div>	
+			
+		<div class="col-md-8">
+		<div class="card-body p-4">
+			<h6>Information</h6>
+			<hr class="mt-0 mb-4">
+		<div class="row pt-1">
+				<form class="form-horizontal" th:action="@{/user/signup}" method="post" th:object="${user}">
+		<div class="form-group">
+		<div class="row pt-1">
+		<div class="col-6 mb-3">
+			<h6>Email</h6>
+			<p class="text-primary" th:text="${user.email}" />
+		</div>
+		<div class="col-6 mb-3">
+			<h6>Username</h6>
+			<p class="text-primary" th:text="${user.username}" />
+		</div>
+		</div>
+		<div class="col-12 mb-3">
+			<h6>Location</h6>
+			<p class="text-primary" th:text="${user.location}" />
+		</div>
+			<h6>About Me</h6>
+			<hr class="mt-0 mb-4">
+		<div class="row pt-1">
+		<div class="col-6 mb-3">
+			<h6>Occupation</h6>
+			<p class="text-primary" th:text="${user.occupation}" />
+		</form>
+		
+		<div class="col-6 mb-3">
+			<form th:action="@{/accounts/user/courses}" method="get">					
+				<input type="submit" class="btn btn-success" value="Courses"/>
+			</form>
+		</div>
+		
+		<div class="col-6 mb-3">
+			<a th:href="@{'/accounts/user/profile/edit?username='+${user.username}}" class="btn btn-primary">Edit Profile</a>
+		</div>
+		
+		</div>			
+		<div class="col-6 mb-3">
+			<h6>Interests</h6>
+			<p class="text-primary" th:text="${user.interests}" />
+			
+		<div class="col-6 mb-3">
+			<form th:action="@{/accounts/user/payments}" method="get">					
+				<input type="submit" class="btn btn-success" value="Expenses"/>
+			</form>
+		</div>
+
+		<div class="col-6 mb-3">										
+			<form th:action="@{/accounts/user/login}" method="get">					
+				<input type="submit" class="btn btn-warning" value="Log out"/>
+			</form>
+		</div>
+		
+		</div>
+		</div>
+		</div>
+		</form>							
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</section>
+<div th:replace="fragments/footer.html"></div>
